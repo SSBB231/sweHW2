@@ -8,7 +8,13 @@ const port = process.env.PORT || 5000;
 let dataset = fetch('https://itunes.apple.com/search?term=top+pop+hits&entity=track&limit=100').then(function(res) 
 	{
 		return res.json();
- 	}).then((json)=>{console.log(json);});
+ 	}).then((json)=>
+	{
+		if(json !== null)
+			console.log("JSON");
+		else
+			console.log("NO JSON");
+	});
 
 /*
 Computed Resources
