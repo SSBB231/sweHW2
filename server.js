@@ -5,13 +5,16 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-let dataset = fetch('https://itunes.apple.com/search?term=top+pop+hits&entity=track&limit=100').then(function(res) 
+let dataset = fetch('https://itunes.apple.com/search?term=top+pop+hits&limit=100').then(function(res)
 	{
 		return res.json();
  	}).then(function(json)
 	{
 		if(json !== null)
-			console.log("JSON");
+		{
+            console.log("JSON");
+            console.log(json);
+        }
 		else
 			console.log("NO JSON");
 	});
