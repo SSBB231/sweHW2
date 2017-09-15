@@ -37,7 +37,6 @@ class TrackManager
 		this.bySong = new Map();
 		this.artists = new Map();
 		this.dSet = dSet;
-		populate(dSet);
 	}
 
 	getAllArtistNames()
@@ -90,7 +89,7 @@ class Artist
 	}
 }
 
-// let tManager = new TrackManager(dataset);
+let tManager = new TrackManager(dataset);
 
 app.get('/', (req, res)=>
 {
