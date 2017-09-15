@@ -40,6 +40,16 @@ class TrackManager
 		populate(dSet);
 	}
 
+	getAllArtistNames()
+	{
+		let artistNames = new Set();
+
+		for(let track of dSet.results)
+		{
+			artistNames.add();
+		}
+	}
+
 	populate(dSet)
 	{
 		for (let track of dSet.results)
@@ -47,6 +57,12 @@ class TrackManager
 			bySong.put(track.trackName, track.artistName);
 		}
 	
+		let namesSet = getAllArtistNames();
+
+		for(let name of namesSet)
+		{
+			artists.put(name, groupAllTracksFor(name));
+		}
 	}
 
 	groupAllTracksFor(artist)
@@ -70,6 +86,9 @@ class Artist
 		this.tracks = [];
 	}
 }
+
+let tManager = new TrackManager(dataset);
+tManager.populate();
 
 app.get('/', (req, res)=>
 {
