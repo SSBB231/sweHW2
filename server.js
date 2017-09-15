@@ -29,7 +29,7 @@ delete will only delete from the cached database
 */
 
 
-/*
+
 class TrackManager
 {
 	constructor(dSet)
@@ -67,14 +67,15 @@ class TrackManager
 
 	groupAllTracksFor(artist)
 	{
-		tracks = [];
-		for(let track of this.dSet.results)
-		{
-			if(track.artistName)
-				tracks.push(track);
-		}
-
-		return tracks;
+		// tracks = [];
+		// for(let track of this.dSet.results)
+		// {
+		// 	if(track.artistName)
+		// 		tracks.push(track);
+		// }
+        //
+		// return tracks;
+		return [];
 	}
 }
 
@@ -89,7 +90,7 @@ class Artist
 
 let tManager = new TrackManager(dataset);
 tManager.populate();
-*/
+
 app.get('/', (req, res)=>
 {
 	res.send('Hello World!');
