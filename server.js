@@ -52,17 +52,17 @@ class TrackManager
 
 	populate(dSet)
 	{
-		for (let track of dSet.results)
-		{
-			bySong.put(track.trackName, track.artistName);
-		}
-	
-		let namesSet = getAllArtistNames();
-
-		for(let name of namesSet)
-		{
-			artists.put(name, groupAllTracksFor(name));
-		}
+		// for (let track of dSet.results)
+		// {
+		// 	bySong.put(track.trackName, track.artistName);
+		// }
+        //
+		// let namesSet = getAllArtistNames();
+        //
+		// for(let name of namesSet)
+		// {
+		// 	artists.put(name, groupAllTracksFor(name));
+		// }
 	}
 
 	groupAllTracksFor(artist)
@@ -70,7 +70,7 @@ class TrackManager
 		// tracks = [];
 		// for(let track of this.dSet.results)
 		// {
-		// 	if(track.artistName)
+		// 	if(track.artistName === artist)
 		// 		tracks.push(track);
 		// }
         //
