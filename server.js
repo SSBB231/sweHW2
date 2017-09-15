@@ -48,6 +48,8 @@ class TrackManager
 		{
 			artistNames.add();
 		}
+
+		return artistNames;
 	}
 
 	populate(dSet)
@@ -88,8 +90,7 @@ class Artist
 	}
 }
 
-let tManager = new TrackManager(dataset);
-tManager.populate();
+// let tManager = new TrackManager(dataset);
 
 app.get('/', (req, res)=>
 {
