@@ -7,9 +7,8 @@ const port = process.env.PORT || 5000;
 
 let dataset = fetch('https://itunes.apple.com/search?term=top+pop+hits&entity=track&limit=100').then(function(res) 
 	{
-		console.log(res.json());
 		return res.json();
- 	});
+ 	}).then(()=>{console.log(res.json());});
 
 /*
 Computed Resources
@@ -90,6 +89,7 @@ class Artist
 }
 
 let tManager = new TrackManager(dataset);
+tManager.populate(dataset);
 
 app.get('/', (req, res)=>
 {
