@@ -29,7 +29,7 @@ delete will only delete from the cached database
 */
 
 
-
+/*
 class TrackManager
 {
 	constructor(dSet)
@@ -89,7 +89,7 @@ class Artist
 
 let tManager = new TrackManager(dataset);
 tManager.populate();
-
+*/
 app.get('/', (req, res)=>
 {
 	res.send('Hello World!');
