@@ -34,9 +34,9 @@ class TrackManager
 {
 	constructor(dSet)
 	{
-		let this.bySong = new Map();
-		let this.artists = new Map();
-		let this.dSet = dSet
+		this.bySong = new Map();
+		this.artists = new Map();
+		this.dSet = dSet;
 		populate(dSet);
 	}
 
@@ -70,7 +70,6 @@ class Artist
 		this.tracks = [];
 	}
 }
-
 
 app.get('/', (req, res)=>
 {
