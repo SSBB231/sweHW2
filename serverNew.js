@@ -232,26 +232,29 @@ let main = function main()
 // 	res.send(JSON.stringify(tManager.artists.get(artistName).tList));
 // });
 
-// app.get('/artists/:aName/average', function (req, res)
-// {
-//     let artistName = req.params.aName.replace(/_/gi," ");
+router.route('/artists/:aName/average')
+    .get(function (req, res)
+    {
+        let artistName = req.params.aName.replace(/_/gi," ");
+
+        res.send("Average cost per minute is: $" + averageTrackPriceFor(tManager.artists.get(artistName)).toFixed(2));
+    });
 //
-// 	res.send("Average cost per minute is: $" + averageTrackPriceFor(tManager.artists.get(artistName)).toFixed(2));
-// });
+router.route('/artists/:aName/explicit')
+    .get(function (req, res)
+    {
+        let artistName = req.params.aName.replace(/_/gi," ");
+
+        res.send("Percentage of Explicit tracks: " + percentExplicit(tManager.artists.get(artistName)).toFixed(2) + "%");
+    });
 //
-// app.get('/artists/:aName/explicit', function (req, res)
-// {
-//     let artistName = req.params.aName.replace(/_/gi," ");
-//
-//     res.send("Percentage of Explicit tracks: " + percentExplicit(tManager.artists.get(artistName)).toFixed(2) + "%");
-// });
-//
-// app.get('/artists/:aName/tracks/:tName/savings', function (req, res)
-// {
-//     let trackName = req.params.tName.replace(/_/gi," ");
-//
-// 	savings(res, tManager.bySong.get(trackName));
-// });
+router.route('/artists/:aName/tracks/:tName/savings')
+    .get( function (req, res)
+    {
+        let trackName = req.params.tName.replace(/_/gi," ");
+
+        savings(res, tManager.bySong.get(trackName));
+    });
 
 //============================================================================================
 
