@@ -220,10 +220,10 @@ let main = function main()
 // });
 
 //============================================================================================
-app.get('/artists', function(req, res)
-{
-    res.send(JSON.stringify(tManager.getArtists()));
-});
+// app.get('/artists', function(req, res)
+// {
+//     res.send(JSON.stringify(tManager.getArtists()));
+// });
 
 // app.get('/artists/:aName', function (req, res)
 // {
@@ -232,26 +232,26 @@ app.get('/artists', function(req, res)
 // 	res.send(JSON.stringify(tManager.artists.get(artistName).tList));
 // });
 
-app.get('/artists/:aName/average', function (req, res)
-{
-    let artistName = req.params.aName.replace(/_/gi," ");
-
-	res.send("Average cost per minute is: $" + averageTrackPriceFor(tManager.artists.get(artistName)).toFixed(2));
-});
-
-app.get('/artists/:aName/explicit', function (req, res)
-{
-    let artistName = req.params.aName.replace(/_/gi," ");
-
-    res.send("Percentage of Explicit tracks: " + percentExplicit(tManager.artists.get(artistName)).toFixed(2) + "%");
-});
-
-app.get('/artists/:aName/tracks/:tName/savings', function (req, res)
-{
-    let trackName = req.params.tName.replace(/_/gi," ");
-
-	savings(res, tManager.bySong.get(trackName));
-});
+// app.get('/artists/:aName/average', function (req, res)
+// {
+//     let artistName = req.params.aName.replace(/_/gi," ");
+//
+// 	res.send("Average cost per minute is: $" + averageTrackPriceFor(tManager.artists.get(artistName)).toFixed(2));
+// });
+//
+// app.get('/artists/:aName/explicit', function (req, res)
+// {
+//     let artistName = req.params.aName.replace(/_/gi," ");
+//
+//     res.send("Percentage of Explicit tracks: " + percentExplicit(tManager.artists.get(artistName)).toFixed(2) + "%");
+// });
+//
+// app.get('/artists/:aName/tracks/:tName/savings', function (req, res)
+// {
+//     let trackName = req.params.tName.replace(/_/gi," ");
+//
+// 	savings(res, tManager.bySong.get(trackName));
+// });
 
 //============================================================================================
 
@@ -353,6 +353,32 @@ router.route('/artists/:aName')
         let artistName = req.params.aName.replace(/_/gi," ");
   //      console.log(tManager.artists.get(artistName));
         res.send(JSON.stringify(tManager.artists.get(artistName).tList));
+    })
+    .delete(function (req, res)
+    {
+        let artist = req.params.aName.replace(/_/gi, " ");
+
+        if(tManager.artists.get(artist) === undefined)
+        {
+            res.status(500).send("doesn't exist");
+        }
+        else
+        {
+            console.log(artist);
+            for(let i = dataset.results.length-1; i > -1; i--)
+            {
+                //   console.log(dataset.results[i]);
+                //   console.log(dataset.results[i].artistName);
+                if(dataset.results[i].artistName === artist)
+                {
+                    dataset.results.splice(i, 1);
+                    console.log('Deleted an artist entry');
+                }
+            }
+            tManager = new TrackManager(dataset);
+            tManager.populate();
+        }
+        res.send('Deleted all entries of that artist');
     });
 
 //============================================================================================
