@@ -220,17 +220,17 @@ let main = function main()
 // });
 
 //============================================================================================
-// app.get('/artists', function(req, res)
-// {
-//     res.send(JSON.stringify(tManager.getArtists()));
-// });
+router.route('/artists').get(function(req, res)
+{
+    res.send(JSON.stringify(tManager.getArtists()));
+});
 
-// app.get('/artists/:aName', function (req, res)
-// {
-// 	let artistName = req.params.aName.replace(/_/gi," ");
-//
-// 	res.send(JSON.stringify(tManager.artists.get(artistName).tList));
-// });
+router.route('/artists/:aName').get( function (req, res)
+{
+	let artistName = req.params.aName.replace(/_/gi," ");
+
+	res.send(JSON.stringify(tManager.artists.get(artistName).tList));
+});
 
 router.route('/artists/:aName/average')
     .get(function (req, res)
