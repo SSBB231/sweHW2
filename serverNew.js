@@ -228,8 +228,18 @@ router.route('/artists').get(function(req, res)
 router.route('/artists/:aName').get( function (req, res)
 {
 	let artistName = req.params.aName.replace(/_/gi," ");
+    //
+	// res.send(JSON.stringify(tManager.artists.get(artistName).tList));
 
-	res.send(JSON.stringify(tManager.artists.get(artistName).tList));
+    if(tManager.artists.get(artistName) === undefined)
+    {
+        res.status(500).send("Doesn't exist");
+
+    }
+    else
+    {
+        res.send(JSON.stringify(tManager.artists.get(artistName).tList));
+    }
 });
 
 router.route('/artists/:aName/average')
